@@ -1,41 +1,39 @@
-import React from "react";
+import React from 'react';
+import {Routes, Route, Link} from 'react-router-dom';
 
-const dataList = [
-  { id: 1, name: "a", image: "image1" },
-  { id: 2, name: "b", image: "image2" },
-  { id: 3, name: "c", image: "image3" },
-  { id: 4, name: "d", image: "image4" },
-  { id: 5, name: "e", image: "image5" },
-  { id: 6, name: "f", image: "image6" },
-];
+import FunctionComponent from './FunctionComponent';
+import ClassComponent from './ClassComponent';
+import ReactRouteDom from './ReactRouteDom';
+import UseState from './UseState';
+import ListArray from './ListArray';
 
-function GetData({ name, image }) {
-  return (
-    <div>
-      <h2>
-        {name}, {image}
-      </h2>
-    </div>
-  );
-}
-
-function Es5Grammar(props) {
-  return <h2>Es5Grammar {props.propsval}</h2>;
-}
-
-function Es6Grammar({ propsval }) {
-  return <h2>Es6Grammar {propsval}</h2>;
-}
-
-function App() {
+function App() { 
   return (
     <div className="App">
-      <h1>React에서 컴포넌트는 대문자로 시작해야 한다</h1>
-      <Es5Grammar propsval="넘어온 값은 props라고 한다" value="ES5 문법" />
-      <Es6Grammar propsval="넘어온 값은 props라고 한다" value="ES6 문법" />
-      {dataList.map((data) => (
-        <GetData key={data.id} name={data.name} image={data.image} />
-      ))}
+      <nav>
+        <p>----Home----</p>
+        <Link to="/">Home</Link>
+        <p>----React-Route-Dom----</p>
+        <Link to="/ReactRouteDom">ReactRouteDom</Link>
+        <p>----function component----</p>
+        <Link to="/FunctionComponent">FunctionComponent</Link>
+        <p>----class component----</p>
+        <Link to="/ClassComponent">ClassComponent</Link>
+        <p>----UseState----</p>
+        <Link to="/UseState">UseState</Link>
+        <p>----Array----</p>
+        <Link to="/ListArray">ListArray</Link>
+      </nav>
+
+      {/* react-router-dom을 이용해 라우팅을 해준다 */}
+      <Routes>
+        <Route path="/" element={""} />
+        <Route path="/ReactRouteDom" element={<ReactRouteDom />} />
+        <Route path="/FunctionComponent" element={<FunctionComponent />} />
+        <Route path="/ClassComponent" element={<ClassComponent />} />
+        <Route path="/UseState" element={<UseState />} />
+        <Route path="/ListArray" element={<ListArray />} />
+      </Routes>
     </div>
   );
 }
